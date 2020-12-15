@@ -27,7 +27,7 @@ app.get('/newFeeds', async (req,res)=>{
 			offset=0;
 			console.log(offset, "offset");
 		}
-		res.send(await newsArticleModel.find({}).limit(limit).skip(offset));
+		res.send(await newsArticleModel.find({}).skip(offset).limit(limit));
 
 });
 
