@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.get('/newFeeds', async (req,res)=>{
-	if(req.query.limit || req.query.offset){
+	
 		let limit=null;
 		let offset=null;
 		if(req.query.limit && parseInt(req.query.limit)>=0){
@@ -28,7 +28,6 @@ app.get('/newFeeds', async (req,res)=>{
 			console.log(offset, "offset");
 		}
 		res.send(await newsArticleModel.find({}).limit(limit).skip(offset));
-	}
 
 });
 
