@@ -13,7 +13,7 @@ app.get('/newFeeds', async (req,res)=>{
 	
 		let limit=null;
 		let offset=null;
-		if(req.query.limit && parseInt(req.query.limit)>=0){
+		if(req.query.limit && parseInt(req.query.limit)>0){
 			limit=parseInt(req.query.limit);
 			console.log(limit, "limit");
 		}else{
