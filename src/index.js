@@ -9,19 +9,21 @@ const { newsArticleModel } = require('./connector');
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+
+function isValid(value){
+	return !(value===undefined || value===null || (value!=value));
+}
 app.get('/newFeeds', async (req,res)=>{
 	
-		let limit=null;
-		let offset=null;
-		if(req.query.limit && parseInt(req.query.limit)>0){
-			limit=parseInt(req.query.limit);
+		let limit=parseInt(req.query.limit);
+		let offset=parseInt(req.query.offset);
+		if(isValid(limit) && limit>0){
 			console.log(limit, "limit");
 		}else{
 			limit=10;
 			console.log(limit, "limit");
 		}
-		if(req.query.offset && parseInt(req.query.offset)>=0){
-			offset=parseInt(req.query.offset);
+		if(isValid(offset) && offset>=0){
 			console.log(offset, "offset");
 		}else{
 			offset=0;
