@@ -15,8 +15,8 @@ function isValid(value){
 }
 app.get('/newFeeds', async (req,res)=>{
 	
-		let limit=parseInt(req.query.limit);
-		let offset=parseInt(req.query.offset);
+		let limit=Number(req.query.limit);
+		let offset=Number(req.query.offset);
 		if(isValid(limit) && limit>0){
 			console.log(limit, "limit");
 		}else{
